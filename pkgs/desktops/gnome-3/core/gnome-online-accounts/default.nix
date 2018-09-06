@@ -1,7 +1,7 @@
 { stdenv, fetchurl, pkgconfig, vala, glib, libxslt, gtk, wrapGAppsHook
-, webkitgtk, json-glib, rest, libsecret, dbus-glib, gtk-doc
-, telepathy-glib, gettext, icu, glib-networking
-, libsoup, docbook_xsl, docbook_xsl_ns, gnome3, gcr, kerberos
+, webkitgtk, json-glib, rest, libsecret, gtk-doc
+, gettext, icu, glib-networking
+, libsoup, docbook_xsl, docbook_xml_dtd_412, gnome3, gcr, kerberos
 }:
 
 let
@@ -23,16 +23,17 @@ in stdenv.mkDerivation rec {
     "--enable-lastfm"
     "--enable-todoist"
     "--enable-gtk-doc"
+    "--enable-documentation"
   ];
 
   enableParallelBuilding = true;
 
   nativeBuildInputs = [
     pkgconfig vala gettext wrapGAppsHook
-    libxslt docbook_xsl docbook_xsl_ns gtk-doc
+    libxslt docbook_xsl docbook_xml_dtd_412 gtk-doc
   ];
   buildInputs = [
-    glib gtk webkitgtk json-glib rest libsecret dbus-glib telepathy-glib glib-networking icu libsoup
+    glib gtk webkitgtk json-glib rest libsecret glib-networking icu libsoup
     gcr kerberos
   ];
 
